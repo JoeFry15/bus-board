@@ -3,9 +3,11 @@ export async function busArrival(id) {
     let response = await fetch(url);
     let arrivalData = await response.json();
 
+    let busQuant = Math.min(arrivalData.length, 5);
+
     const busArrivalArr = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < busQuant; i++) {
         busArrivalArr.push([arrivalData[i].lineName, arrivalData[i].destinationName, (Math.floor(arrivalData[i].timeToStation / 60))]);
     }
 

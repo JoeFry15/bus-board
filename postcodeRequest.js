@@ -1,14 +1,9 @@
-import readline from "readline";
+import PromptSync from "prompt-sync";
 
-export async function postcodeRequest() {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
 
-    rl.question('What is your postcode ', (postcode) => {
-        console.log('Your postcode is: ' + postcode);
-        rl.close();
-    });
+export function postcodeRequest(str) {
+    const prompt = PromptSync();
 
+    return prompt(str);
 }
+
