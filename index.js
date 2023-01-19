@@ -3,13 +3,11 @@ import { coordinates } from "./coordinates.js";
 import { busArrival } from "./busArrival.js";
 
 let ourcoordinates = await coordinates("W1T1JU");
-let latitude = ourcoordinates.latitude;
-let longitude = ourcoordinates.longitude;
 
-let busStopInfo = await busStopData(latitude, longitude);
+let busStopInfo = await busStopData(ourcoordinates.latitude, ourcoordinates.longitude);
 
-console.log(busStopInfo.stop1name);
+console.log(busStopInfo.stop1name + " (ID:" + busStopInfo.stop1id + ")" + "\nService number | Destination | Minutes til arrival");
 console.log(await busArrival(busStopInfo.stop1id));
 
-console.log(busStopInfo.stop2name);
+console.log(busStopInfo.stop2name + " (ID:" + busStopInfo.stop2id + ")" + "\nService number | Destination | Minutes til arrival");
 console.log(await busArrival(busStopInfo.stop2id));

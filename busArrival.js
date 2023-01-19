@@ -3,8 +3,6 @@ export async function busArrival(id) {
     let response = await fetch(url);
     let arrivalData = await response.json();
 
-    // return arrivalData;
-
     const busArrivalArr = [];
 
     for (let i = 0; i < 5; i++) {
