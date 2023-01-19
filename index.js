@@ -1,6 +1,11 @@
 import { busStopData } from "./busStopData.js";
 import { coordinates } from "./coordinates.js";
 import { busArrival } from "./busArrival.js";
+import { postcodeRequest } from "./postcodeRequest.js";
+
+
+
+// let postcode = await postcodeRequest;
 
 let ourcoordinates = await coordinates("W1T1JU");
 
