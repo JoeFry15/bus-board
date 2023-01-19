@@ -1,10 +1,8 @@
-fetch('https://api.tfl.gov.uk/StopPoint/?lat=51.654458&lon=-0.188359&stopTypes=NaptanPublicBusCoachTram', {
+import { busStopData } from "./busStopData.js";
+import { coordinates } from "./coordinates.js";
 
-    })
-    .then(response => {
-        console.log(response.status);
-        console.log(response.text());
-        console.log(respgutonse.stopLetter)
-    })
-    .catch(err => console.error(err));
-    
+let ourcoordinates = await coordinates("EN55LP");
+let latitude = ourcoordinates.latitude;
+let longitude = ourcoordinates.longitude;
+
+busStopData(latitude,longitude)
