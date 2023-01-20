@@ -21,5 +21,5 @@ export async function busArrival(id) {
     return sortedArray;
 }
 
-// const response = await fetch ("https://api.digital.tfl.gov.uk/Journey/JourneyResults/W1T1JU/to/490000235YB")
-// console.log(response);
+ const response = await fetch ("https://api.digital.tfl.gov.uk/Journey/JourneyResults/W1T1JU/to/EN55LP")
+ console.log(response);
