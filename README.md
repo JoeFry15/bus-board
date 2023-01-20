@@ -1,8 +1,10 @@
 # BusStopFinder
 
-This tool takes a postcode user input, searches the TFL data for the nearest bus stops and outputs the next arriving buses line ID, destination & arrival times.
+This tool takes a user inputted postcode, searches the TFL API for the nearest bus stops and outputs the next arriving bus services, destination, and time until arrival.
 
 ## Setup
-Run `npm start` to initiate
 
-install packages with `npm install`
+Set up dependencies by running `npm install`
+
+Run `npm start` to run the project
+
