@@ -5,15 +5,21 @@ export async function busArrival(id) {
 
     let busQuant = Math.min(arrivalData.length, 5);
 
-    const busArrivalArr = [];
-
+    const busArrivals = [];
     for (let i = 0; i < busQuant; i++) {
-        busArrivalArr.push([arrivalData[i].lineName, arrivalData[i].destinationName, (Math.floor(arrivalData[i].timeToStation / 60))]);
+        busArrivals.push({
+            line: arrivalData[i].lineId,
+            destination: arrivalData[i].destinationName,
+            time: (Math.floor(arrivalData[i].timeToStation / 60))
+        });
     }
 
-    var sortedArray = busArrivalArr.sort(function (a, b) {
-        return a[2] - b[2];
+    var sortedArray = busArrivals.sort(function (arrivalA, arrivalB) {
+        return arrivalA.time - arrivalB.time;
     });
 
     return sortedArray;
 }
+
+// const response = await fetch ("https://api.digital.tfl.gov.uk/Journey/JourneyResults/W1T1JU/to/490000235YB")
+// console.log(response);

@@ -2,19 +2,20 @@ import { busStopData } from "./busStopData.js";
 import { coordinates } from "./coordinates.js";
 import { busArrival } from "./busArrival.js";
 
-
-
 let ourcoordinates = await coordinates();
 
 let busStopInfo = await busStopData(ourcoordinates);
 
-let busTimesInfoS1 = await busArrival(busStopInfo.stop1id);
+if (busStopInfo.length === 0) {
+    console.log("There are no stops nearby")
+} else {
 
-let busTimesInfoS2 = await busArrival(busStopInfo.stop2id);
+    for (let i = 0; i < Math.min(busStopInfo.length, 2); i++) {
+        let busTimesInfo = await busArrival(busStopInfo[i].id);
+        console.log(`${busStopInfo[i].commonName} (ID: ${busStopInfo[i].id} ) \nService number | Destination | Minutes til arrival`);
+        console.log(busTimesInfo.length !== 0 ? busTimesInfo : "No buses found at this stop.");
+    }
+}
 
 
-console.log(busStopInfo.stop1name + " (ID:" + busStopInfo.stop1id + ")" + "\nService number | Destination | Minutes til arrival");
-console.log(busTimesInfoS1.length !== 0 ? busTimesInfoS1 : "No buses found at this stop.");
 
-console.log(busStopInfo.stop2name + " (ID:" + busStopInfo.stop2id + ")" + "\nService number | Destination | Minutes til arrival");
-console.log(busTimesInfoS2.length !== 0 ? busTimesInfoS2 : "No buses found at this stop.");
